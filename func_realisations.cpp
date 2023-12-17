@@ -42,6 +42,12 @@ double op_deg(stack <double> &s) {
     //b^a!!
     return pow(b,a);
 }
+double op_sqrt(stack <double> &s) {
+    double a;
+    a = s.top();
+    s.pop();
+    return sqrt(a);
+}
 double op_opposite(stack <double> &s) {
     double a;
     a = s.top();

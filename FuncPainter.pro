@@ -12,6 +12,7 @@ CONFIG += c++17
 
 SOURCES += \
     func_realisations.cpp \
+    integral.cpp \
     main.cpp \
     parser.cpp \
     qcustomplot.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     func_realisations.h \
+    integral.h \
     parser.h \
     qcustomplot.h \
     widget.h

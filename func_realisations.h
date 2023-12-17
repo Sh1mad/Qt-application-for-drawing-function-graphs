@@ -9,6 +9,7 @@ double op_minus(std::stack <double> &s);
 double op_mul(std::stack <double> &s);
 double op_div(std::stack <double> &s);
 double op_deg(std::stack <double> &s);
+double op_sqrt(std::stack <double> &s);
 double op_opposite(std::stack <double> &s);
 double op_not(std::stack <double> &s);
 double op_sin(std::stack <double> &s);

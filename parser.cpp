@@ -31,6 +31,7 @@ void CreateOps() {
     ops.insert({"*", op_mul});
     ops.insert({"/", op_div});
     ops.insert({"^", op_deg});
+    ops.insert({"sqrt", op_sqrt});
     ops.insert({"opposite", op_opposite});
     ops.insert({"!", op_not});
     ops.insert({"sin", op_sin});
