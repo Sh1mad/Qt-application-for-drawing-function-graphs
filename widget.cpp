@@ -22,6 +22,7 @@ Widget::Widget(QWidget *parent)
     ui->canva->xAxis->grid()->setSubGridVisible(true);
     ui->canva->yAxis->grid()->setSubGridVisible(true);
 
+    init_help();
     hide_integral();
 }
 
@@ -40,11 +41,7 @@ void Widget::set_default_range(){
 
 void Widget::on_buildButton_clicked()
 {
-    clear_data();
-    clear_int();
-    plot1();
-    plot_int();
-
+    clear_canva();
     set_default_range();
 
     function = ui->lineEdit->text().toStdString();
@@ -136,14 +133,19 @@ void Widget::hide_integral(){
     ui->scrollArea->hide();
 }
 
-void Widget::on_deleteBut_clicked()
-{
+void Widget::clear_canva(){
     clear_data();
     clear_int();
     clear_roots();
     plot1();
     plot_int();
     plot_roots();
+    ui->root_list->clear();
+}
+
+void Widget::on_deleteBut_clicked()
+{
+    clear_canva();
     hide_integral();
     ui->lineEdit->clear();
     ui->root_list->clear();
@@ -167,14 +169,19 @@ void Widget::on_integralBut_clicked()
     res = integral(tok, a, b);
     if (res < 0.0001) res = 0;
 
-    if (ui->integral_a->text() == "" || ui->integral_b->text() == "") ui->integralLabel->setText("Введите промежутки интегрирования!");
-    else if (a > b) ui->integralLabel->setText("Введите a<b!");
+    if (ui->integral_a->text() == "" || ui->integral_b->text() == "") {
+        errorMessage.showMessage("Введите промежутки интегрирования!");
+        errorMessage.exec();
+    }
+    else if (a > b){
+        errorMessage.showMessage("a должно быть меньше b!");
+        errorMessage.exec();
+    }
     else {
         paint_integral(a,b);
         ui->integralLabel->setText("Интеграл равен: " + QString::number(res));
     }
 }
-
 
 void Widget::on_root_but_clicked()
 {
@@ -190,14 +197,19 @@ void Widget::on_root_but_clicked()
 }
 
 void Widget::init_help(){
-    help_str = "";
+    help_str = "Введите функцию, зависящую от x.\nУмножение указывается явно: a*b\nДеление: a/b\nВозведение в степень: a^b\nКорень квадратный: sqrt(x)\nУгол указывается в радианах!\nСинус: sin(x)\nКосинус: cos(x)\nТангенс: tan(x)\nАрксинус: asin(x)\nАрккосинус: acos(x)\nАрктангенс: atan(x)\nМодуль: abs(x)\nЭкспонента (e^x): exp(x)\nНатуральный логарифм: log(x)\nЛогарифм по основанию 10: log10(x)\nЛогарифм по основанию 2: log2(x)\nЕсли нужно взять логарифм по другому основанию, можете воспользоваться формулой:\nlogb(a) = logy(a)/logy(b)";
 }
 
 void Widget::on_help_but_clicked()
 {
-    help_window->setWindowTitle("Справка");
-    help_window->resize(400, 200);
-    help_window->show();
-
+    scroll_help->setWidget(help_window);
+    scroll_help->verticalScrollBar()->setEnabled(false);
+    scroll_help->horizontalScrollBar()->setEnabled(false);
+    scroll_help->setWindowTitle("Справка");
+    scroll_help->setFixedSize(700,450);
+    help_window->setReadOnly(true);
+    help_window->resize(700, 450);
+    help_window->setFontPointSize(12);
+    help_window->setText(help_str);
+    scroll_help->show();
 }
-

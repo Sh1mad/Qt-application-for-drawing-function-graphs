@@ -9,6 +9,10 @@
 #include "parser.h"
 #include "integral.h"
 #include <QTextEdit>
+#include <iostream>
+#include <fstream>
+#include "QScrollArea"
+#include <QErrorMessage>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -57,6 +61,8 @@ private slots:
 
     void init_help();
 
+    void clear_canva();
+
 private:
     Ui::Widget *ui;
     QVector<double> x_mas, y_mas, x_int, y_int, x_root, y_root;
@@ -65,6 +71,8 @@ private:
     tokens tok;
     std::string function;
     double func_min, func_max;
+    QScrollArea* scroll_help = new QScrollArea();
+    QErrorMessage errorMessage;
 //    QVector<QVBoxLayout> left_b, right_b;
 //    QVector<QPushButton> left_buttons1, left_buttons2, right_buttons1, right_buttons2;
 //    QVector<QLineEdit> edits;

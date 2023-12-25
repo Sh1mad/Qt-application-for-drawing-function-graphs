@@ -103,3 +103,27 @@ double op_abs(std::stack <double> &s){
     s.pop();
     return abs(a);
 }
+double op_exp(std::stack <double> &s){
+    double a;
+    a = s.top();
+    s.pop();
+    return exp(a);
+}
+double op_log(std::stack <double> &s){
+    double a;
+    a = s.top();
+    s.pop();
+    return log(a);
+}
+double op_log10(std::stack <double> &s){
+    double a;
+    a = s.top();
+    s.pop();
+    return log10(a);
+}
+double op_log2(std::stack <double> &s){
+    double a;
+    a = s.top();
+    s.pop();
+    return log2(a);
+}

@@ -19,5 +19,9 @@ double op_asin(std::stack <double> &s);
 double op_acos(std::stack <double> &s);
 double op_atan(std::stack <double> &s);
 double op_abs(std::stack <double> &s);
+double op_exp(std::stack <double> &s);
+double op_log(std::stack <double> &s);
+double op_log10(std::stack <double> &s);
+double op_log2(std::stack <double> &s);
 
 #endif // FUNC_REALISATIONS_H

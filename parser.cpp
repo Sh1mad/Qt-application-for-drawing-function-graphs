@@ -41,6 +41,10 @@ void CreateOps() {
     ops.insert({"asin", op_asin});
     ops.insert({"atan", op_atan});
     ops.insert({"abs", op_abs});
+    ops.insert({"exp", op_exp});
+    ops.insert({"log", op_log});
+    ops.insert({"log2", op_log2});
+    ops.insert({"log10", op_log10});
 
     return;
 }

@@ -20,8 +20,8 @@ void find_roots(tokens tok, double a, double b, QVector<double> &x_mas, QVector<
     y_mas.clear();
     double section = b-a;
     double func, cord;
-    for (int i = 0; i < section * 5000 + 1; i++){
-        cord = i/5000.0 + a;
+    for (int i = 0; i < section * 10000 + 1; i++){
+        cord = i/10000.0 + a;
         func = ResultExpr(tok, cord);
         if (abs(func) <= 0.0001){
             x_mas << cord;
