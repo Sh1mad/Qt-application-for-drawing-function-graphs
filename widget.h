@@ -8,6 +8,7 @@
 #include <QLineEdit>
 #include "parser.h"
 #include "integral.h"
+#include <QTextEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -22,9 +23,13 @@ public:
     ~Widget();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_buildButton_clicked();
 
-    void plot();
+    void plot1();
+
+    void plot_int();
+
+    void plot_roots();
 
     void on_deleteBut_clicked();
 
@@ -38,11 +43,28 @@ private slots:
 
     void set_default_range();
 
+    void set_data(QVector<double> &x_mas, QVector<double> &y_mas, double x_min = -100.0, double x_max = 100.0);
+
+    void paint_integral(double a, double b);
+
+    void clear_int();
+
+    void clear_roots();
+
+    void on_root_but_clicked();
+
+    void on_help_but_clicked();
+
+    void init_help();
+
 private:
     Ui::Widget *ui;
-    QVector<double> x_mas, y_mas;
+    QVector<double> x_mas, y_mas, x_int, y_int, x_root, y_root;
+    QTextEdit* help_window = new QTextEdit();
+    QString help_str;
     tokens tok;
     std::string function;
+    double func_min, func_max;
 //    QVector<QVBoxLayout> left_b, right_b;
 //    QVector<QPushButton> left_buttons1, left_buttons2, right_buttons1, right_buttons2;
 //    QVector<QLineEdit> edits;

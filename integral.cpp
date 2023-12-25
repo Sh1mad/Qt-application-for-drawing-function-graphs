@@ -13,3 +13,19 @@ double integral(tokens tok, double a, double b){
     }
     return integ;
 }
+
+void find_roots(tokens tok, double a, double b, QVector<double> &x_mas, QVector<double> &y_mas)
+{
+    x_mas.clear();
+    y_mas.clear();
+    double section = b-a;
+    double func, cord;
+    for (int i = 0; i < section * 5000 + 1; i++){
+        cord = i/5000.0 + a;
+        func = ResultExpr(tok, cord);
+        if (abs(func) <= 0.0001){
+            x_mas << cord;
+            y_mas << 0;
+        }
+    }
+}
